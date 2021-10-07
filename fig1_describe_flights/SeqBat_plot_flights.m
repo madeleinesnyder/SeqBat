@@ -1,7 +1,7 @@
 
 function TEMP_flights(flightPaths,FlightPaths2plot,Days2use);
 
-
+% Legacy function TEMP_flights in ImBat Repo
 
 
 figure();
@@ -9,10 +9,6 @@ col = distinguishable_colors(length(unique(flightPaths.id)));
 alpha2use = 0.4;
 
 % for all flights
-
-
-
-
 
 
 hold on;

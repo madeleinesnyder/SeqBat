@@ -62,7 +62,7 @@ for day2use =  Days2use;
 for clust2use = FlightPaths2plot;
     % Hilight stable flights
 hold on;
-title(strcat("Day"," ",num2str(day2use)));
+title(str"Day"," ",num2str(day2use));
 Ind2use =  find(flightPaths.day == day2use );
 Ind2use2 = find(flightPaths.day == day2use & flightPaths.id == clust2use);
 axis off

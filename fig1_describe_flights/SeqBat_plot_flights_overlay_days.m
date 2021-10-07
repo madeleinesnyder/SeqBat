@@ -1,7 +1,4 @@
-
-function TEMP_flights(flightPaths,FlightPaths2plot,Days2use);
-
-% Legacy function TEMP_flights in ImBat Repo
+function SeqBat_plot_flights_overlay_days(flightPaths,FlightPaths2plot,Days2use);
 
 figure();
 col = distinguishable_colors(length(unique(flightPaths.id)));
@@ -21,8 +18,8 @@ for day2use =  Days2use;
     % plot all flights
      %subplot(length(Day2use),1,day2use); 
 
-     subplot(1,length(Days2use),counter); 
-     counter = counter+1;
+     %subplot(1,length(Days2use),counter); 
+     %counter = counter+1;
         
 for clust2use = FlightPaths2plot;
     % Hilight stable flights
@@ -49,20 +46,20 @@ end
 axis off
 
 figure(); 
-counter = 1;
+%counter = 1;
 
 for day2use =  Days2use;
 
     % plot all flights
      %subplot(length(Day2use),1,day2use); 
 
-     subplot(1,length(Days2use),counter); 
-     counter = counter+1;
+     %subplot(1,length(Days2use),counter); 
+     %counter = counter+1;
         
 for clust2use = FlightPaths2plot;
     % Hilight stable flights
 hold on;
-title(strcat("Day"," ",num2str(day2use)));
+title(strcat("Clusterable flights in color. Day(s): "," ",num2str(Days2use(1)),"-",num2str(Days2use(end))));
 Ind2use =  find(flightPaths.day == day2use );
 Ind2use2 = find(flightPaths.day == day2use & flightPaths.id == clust2use);
 axis off
@@ -83,4 +80,3 @@ end
 end
 
 axis off
-

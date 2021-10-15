@@ -80,6 +80,7 @@ end
    xlim([-2800 2800]);
     ylim([-2800 2800]);
      zlim([0 2500]);
+     axis equal
 end
 
 axis off

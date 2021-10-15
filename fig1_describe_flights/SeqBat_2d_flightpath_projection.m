@@ -22,7 +22,7 @@ end
 % comprise 95% of the data)
 clusterable_flights = [2:co];
 % Select a day/series of days to plot
-days2use = [24,25,26];
+days2use = [26];
 % Plot
 SeqBat_plot_flights(flightPaths34,clusterable_flights,days2use);
 
@@ -30,7 +30,7 @@ SeqBat_plot_flights(flightPaths34,clusterable_flights,days2use);
 
 % Select a subset of flights to cluster (Default to plotting clusters that
 % comprise 95% of the data)
-clusterable_flights = [2:co];
+clusterable_flights = [2:10];%co];
 % Select a day/series of days to plot
 days2use = [1:max(flightPaths34.day)];
 % Plot
@@ -40,7 +40,7 @@ SeqBat_plot_flights_overlay_days(flightPaths34,clusterable_flights,days2use);
 
 % Select a subset of flights to cluster (Default to plotting clusters that
 % comprise 95% of the data)
-clusterable_flights = [2:co];
+clusterable_flights = [2:10];%co];
 % Select a day/series of days to plot
 days2use = [1,5,10,15,20];
 % Plot

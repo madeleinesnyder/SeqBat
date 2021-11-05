@@ -53,17 +53,17 @@ function SeqBat_stacked_flightTypes(flightPaths,co,bat)
     colormap_top = distinguishable_colors(11);
 
     figure(); hold on;
-    h = bar(day_profile_top,'stacked','FaceColor','flat');
+    h = bar(day_profile_top,'stacked');
     date_matrix = cell2mat(flightPaths.Dates');
     for i=1:length(date_matrix)
         date_matrix_(i) = str2double(date_matrix(i,:));
     end
     for i=1:length(day_gaps_)
-        plot([find(date_matrix_ == day_gaps_(i))+1/2 find(date_matrix_ == day_gaps_(i))+1/2], [0 200],'Color','r','LineStyle',':','LineWidth',2);
+        plot([find(date_matrix_ == day_gaps_(i)), find(date_matrix_ == day_gaps_(i))], [0 200],'Color','r','LineStyle',':');
     end
-    for i=1:11
-        h(i).CData = repmat(colormap(i,:),length(h(1).CData),1);
-    end
+    %for i=1:11
+    %    h(i).CData = repmat(colormap_top(i,:),length(h(1).CData),1);
+    %end
     
     l = {};
     alphabet = {'UC','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','A_','B_','C_','D_','E_','F_','G_','H_','I_','J_','K_','L_','M_','N_','O_','P_','Q_','R_','S_','T_','U_','V_','W_','X_','Y_','Z_'}

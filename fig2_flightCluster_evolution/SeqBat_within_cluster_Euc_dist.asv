@@ -1,4 +1,4 @@
-function [within_cluster_position_vector,min_position_idx,Euc_D] = SeqBat_within_cluster_Euc_dist(flightPaths,bat,cluster)
+function [within_cluster_position_vector,min_position_idx] = SeqBat_within_cluster_Euc_dist(flightPaths,bat,cluster)
 
 
     [ss_1,rr_1] = sort(flightPaths.flight_starts_idx);
@@ -65,14 +65,8 @@ function [within_cluster_position_vector,min_position_idx,Euc_D] = SeqBat_within
     mean_apex_coordinates = mean(apex_coordinates');
     
     for i=1:length(apex_coordinates)
-        G  = apex_coordinates(:,i);
-        G2 = mean_apex_coordinates';
-        Euc_D(i)  = sqrt(sum((G - G2) .^ 2));
-    end
-    figure();
-    histogram(Euc_D,50,'normalization','probability')
-    line([mean(Euc_D) mean(Euc_D)], [0 .07],'LineWidth',3);
-    title(strcat("Dimension"," ",num2str(i)));
-    
+    G  = apex_coordinates(:,
+    G2 = rand(1, 72);
+    D  = sqrt(sum((G - G2) .^ 2));
 
 end

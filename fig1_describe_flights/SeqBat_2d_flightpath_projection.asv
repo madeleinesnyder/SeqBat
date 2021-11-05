@@ -22,10 +22,9 @@ end
 % comprise 95% of the data)
 clusterable_flights = [1:10];
 % Select a day/series of days to plot
-days2use = [46,47,48,49];
+days2use = [19];
 % Plot
 SeqBat_plot_flights(flightPaths34,clusterable_flights,days2use);
-
 SeqBat_plot_flights_AI(flightPaths34,clusterable_flights,days2use,400,400);
 
 
@@ -47,16 +46,10 @@ SeqBat_plot_flights_overlay_days_AI(flightPaths34,clusterable_flights,days2use);
 % comprise 95% of the data)
 clusterable_flights = [2:co];
 % Select a day/series of days to plot
-days2use = [1,3,5,7,10,11];
+days2use = [1,3,5,7,10,13,14,15,20,25,30,35,40,45,46];
 % Plot
 SeqBat_plot_flights(flightPaths34,clusterable_flights,days2use);
 SeqBat_plot_flights_AI(flightPaths34,clusterable_flights,days2use,2000,100);
-
-%% Plot c2) Github additions plot
-
-SeqBat_github_contributions_plot(flightPaths34,bat,co)
-
-
 
 
 

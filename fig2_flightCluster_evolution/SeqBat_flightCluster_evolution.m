@@ -25,7 +25,7 @@ for i=1:2%length(bats)
     disp(strcat("Processing"," ",bat));
     flightpaths_path = strcat('/Volumes/server_home/users/madeleine/SeqBat/data/Processed_',bats(i),'_LH/CellReg_files/ROI_Data/Saved_Data/Aligned_Data.mat');
     load(flightpaths_path);
-    [c_to_unc] = SeqBat_get_clusteredUnclustered_ratio(flightPaths,bat);
+    [c_to_unc] = SeqBat_get_clusteredUnclustered_ratio(flightPaths34,bat);
     c_to_unc_allbats{i} = c_to_unc;
 end
 
@@ -42,12 +42,23 @@ err_matrix_LB = min(nan_matrix);
 err_matrix_UB = max(nan_matrix);
 errs = err_matrix_UB - err_matrix_LB;
 
-figure(); 
+% Plot all bats' avg of clusterable/non fraction 
+figure(); hold on;
+scatter([1:length(nanmean(nan_matrix))],nanmean(nan_matrix));
 errorbar(nanmean(nan_matrix),errs);
 title("Fraction of Clusterable v.s. Unclusterable Flights across training");
 ylabel("Clusterable/Total Flights");
 xlabel("Days");
 
+% Plot each bat's clusterable/non fraction  overlaid
+figure(); hold on;
+title("Fraction of Clusterable v.s. Unclusterable Flights across training");
+ylabel("Clusterable/Total Flights");
+xlabel("Days");
+for i=1:length(c_to_unc_allbats)
+    scatter([1:length(c_to_unc_allbats{i})],c_to_unc_allbats{i});
+    plot(c_to_unc_allbats{i});
+end
 %% Plot b) All flights in a stacked barchart across training. One per bat.
 
 c_to_unc_allbats = {};
@@ -57,12 +68,11 @@ for i=1:length(bats)
     disp(strcat("Processing"," ",bat));
     flightpaths_path = strcat('/Volumes/server_home/users/madeleine/SeqBat/data/Processed_',bats(i),'_LH/CellReg_files/ROI_Data/Saved_Data/Aligned_Data.mat');
     load(flightpaths_path);
-    SeqBat_stacked_flightTypes(flightPaths34,bat);
+    SeqBat_stacked_flightTypes(flightPaths34,co,bat);
 end
 
 %% Plot c) The mean variance of each flight cluster over time. One per flight cluster.
+% Plot d) For being a #overachiever
 
-cluster = 2;
-SeqBat_within_cluster_variance(flightPaths34,bat,cluster,colormap)
-
-%% Plot d) For being a #overachiever
+clusters = [2];
+SeqBat_within_cluster_variance(flightPaths34,bat,clusters,colormap)

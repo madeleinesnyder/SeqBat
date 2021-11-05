@@ -1,0 +1,38 @@
+% Figure 4. Higher order transition statistics
+
+% Load in flightpaths struct
+load('flightPaths34.mat')
+
+% Get which flightpaths constitute 95% of the data
+five_percent = round(size(flightPaths34.id,1)*(0.05));
+for i=1:length(unique(flightPaths34.id))-1
+    temp1 = length(flightPaths34.id(flightPaths34.id > i));
+    temp2 = length(flightPaths34.id(flightPaths34.id > (i+1)));
+    if temp2 < five_percent & temp1 > five_percent
+        co = i;
+        break
+    else
+        co = 0;
+    end
+end 
+
+%% Plot ai) PST for a given bat
+
+[out_markov] = ImBat_New_Markov(flightPaths34);
+% Create prob suff tree
+p_min_input = 0.001;
+[Tree_] = ImBat_ProbSuffixTree(out_markov,5,p_min_input);
+
+%% Plot aii) Number of extended trees as a function of pst thresholds
+x_val_Tree_ = {};
+x_val = linspace(0.001,0.1,5);
+for i=1:length(x_val)
+    [Tree_] = ImBat_ProbSuffixTree(out_markov,5,x_val(i));
+    if length(Tree_) > 2
+        for j=3:length(Tree_)
+            temp_tree_(j) = length(Tree_{j});
+        end
+        x_val_Tree_{i} = temp_tree_(temp_tree_~=0);
+    end
+end
+
